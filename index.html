@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BenBen Studio — הצטרף לשבט</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #F7F2E8;
+  --dark:     #1C1810;
+  --mid:      #7A6A52;
+  --btn:      #2C2416;
+  --btn-text: #EDE3D0;
+  --border:   #D9C4A4;
+  --accent:   #C4A882;
+  --cream:    #EDE3D0;
+  --white:    #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Heebo', Arial, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--dark);
+  direction: rtl;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─────────────────────────────────────────────────────────── */
+nav {
+  background: var(--btn);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+nav img { height: 26px; display: block; filter: brightness(0) invert(1); opacity: .88; }
+
+/* ─── TICKER ──────────────────────────────────────────────────────── */
+.ticker-wrap {
+  overflow: hidden;
+  background: var(--btn);
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 10px 0;
+}
+.ticker {
+  display: inline-flex;
+  gap: 28px;
+  white-space: nowrap;
+  animation: ticker 24s linear infinite;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--cream);
+  letter-spacing: .05em;
+}
+.dot {
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  align-self: center;
+  flex-shrink: 0;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── HERO ────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+  max-height: 520px;
+}
+.hero img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 25%;
+  max-height: 520px;
+  opacity: .82;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28,24,16,.72) 0%, transparent 55%);
+}
+.hero-text {
+  position: absolute;
+  bottom: 0; right: 0; left: 0;
+  padding: 0 28px 36px;
+  text-align: right;
+}
+.hero-kicker {
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 8px;
+  letter-spacing: .01em;
+}
+.hero-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(237,227,208,.7);
+  letter-spacing: .5px;
+}
+
+/* ─── BADGE STRIP ─────────────────────────────────────────────────── */
+.badge {
+  background: var(--accent);
+  text-align: center;
+  padding: 12px 20px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dark);
+  letter-spacing: .5px;
+}
+.badge strong { font-weight: 500; }
+
+/* ─── FORM SECTION ────────────────────────────────────────────────── */
+.form-section {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 44px 24px 64px;
+}
+
+.kicker {
+  font-family: 'Heebo', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.section-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-bottom: 30px;
+}
+
+/* ─── FIELDS ──────────────────────────────────────────────────────── */
+.field { margin-bottom: 14px; }
+
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--dark);
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 13px 14px;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  transition: border-color .15s;
+  text-align: right;
+}
+input[type="email"],
+input[type="tel"] { direction: ltr; text-align: left; }
+input::placeholder { color: var(--border); }
+input:focus { border-color: var(--btn); }
+
+/* ─── BUTTON ──────────────────────────────────────────────────────── */
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px;
+  background: var(--btn);
+  border: none;
+  border-radius: 0;
+  color: var(--btn-text);
+  font-family: 'Heebo', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, opacity .2s;
+}
+.btn:hover   { background: #1C1810; }
+.btn:active  { opacity: .85; }
+.btn:disabled { background: var(--border); color: var(--mid); cursor: not-allowed; }
+
+/* ─── PERKS ───────────────────────────────────────────────────────── */
+.perks {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row-reverse;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mid);
+}
+.perk-dot {
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── ERROR ───────────────────────────────────────────────────────── */
+.err {
+  display: none;
+  font-size: 13px;
+  font-weight: 300;
+  color: #8b2e2e;
+  background: #f9efef;
+  border: 1px solid #e0c0c0;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ─── SUCCESS ─────────────────────────────────────────────────────── */
+.success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+.success-line {
+  width: 40px; height: 1px;
+  background: var(--accent);
+  margin-bottom: 24px;
+}
+.success h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.success p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.code-box {
+  background: var(--btn);
+  padding: 22px 44px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.code-lbl {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.code-val {
+  font-family: 'Heebo', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 8px;
+  color: var(--cream);
+}
+.code-note {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--mid);
+  margin-bottom: 28px;
+}
+.shop-link {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--btn);
+  color: var(--btn);
+  padding: 13px 40px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.shop-link:hover { background: var(--btn); color: var(--cream); }
+
+/* ─── BRAND STRIP ─────────────────────────────────────────────────── */
+.brand-strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px;
+  text-align: center;
+  background: var(--bg);
+}
+.brand-strip p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--mid);
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+footer {
+  background: var(--btn);
+  padding: 28px 24px;
+  text-align: center;
+}
+footer p { font-size: 11px; color: rgba(237,227,208,.45); margin: 4px 0; letter-spacing: 1px; }
+footer a { color: rgba(237,227,208,.45); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="https://benben-studio.com/cdn/shop/files/logos10.png" alt="BenBen Studio"
+       onerror="this.style.display='none'">
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span>BenBen Studio</span><span class="dot"></span>
+    <span>ים · טבע · חופש</span><span class="dot"></span>
+    <span>Wear the Tribe</span><span class="dot"></span>
+    <span>קולקציות מוגבלות</span><span class="dot"></span>
+    <span>פופ-אפ כל סוף שבוע · חוף הרצליה</span><span class="dot"></span>
+    <!-- ← כפול ללולאה חלקה → -->
+    <span>BenBen Studio</span><span class="dot"></span>
+    <span>ים · טבע · חופש</span><span class="dot"></span>
+    <span>Wear the Tribe</span><span class="dot"></span>
+    <span>קולקציות מוגבלות</span><span class="dot"></span>
+    <span>פופ-אפ כל סוף שבוע · חוף הרצליה</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://benben-studio.com/cdn/shop/files/ben_ben_studio_home-_2_FW2600001.png"
+       alt="BenBen Studio"
+       onerror="this.src='https://benben-studio.com/cdn/shop/files/BenBen_-98_3d8d4ba3-f44e-4c23-b3a5-2aea1507b9b9.jpg'">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <p class="hero-kicker">Wear the Tribe</p>
+    <h1 class="hero-title">הצטרף לשבט</h1>
+    <p class="hero-sub">קולקציות חדשות, הנחות בלעדיות — לפני כולם</p>
+  </div>
+</div>
+
+<!-- BADGE -->
+<div class="badge">
+  הרשמה = <strong>15% הנחה</strong> לרכישה הראשונה שלך באתר
+</div>
+
+<!-- FORM SECTION -->
+<div class="form-section">
+
+  <!-- Form -->
+  <div id="formWrap">
+    <p class="kicker">הצטרפות לשבט</p>
+    <h2 class="section-title">קבל 15% הנחה עכשיו</h2>
+    <p class="section-desc">
+      מלא את הפרטים ותקבל מיד למייל קוד הנחה בלעדי לרכישה הראשונה שלך.
+    </p>
+
+    <div class="field">
+      <label for="f-name">שם מלא</label>
+      <input id="f-name" type="text" placeholder="יוסי כהן" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="f-phone">טלפון</label>
+      <input id="f-phone" type="tel" placeholder="050-0000000" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="f-email">מייל</label>
+      <input id="f-email" type="email" placeholder="yossi@gmail.com" autocomplete="email">
+    </div>
+
+    <div class="err" id="errMsg"></div>
+
+    <button class="btn" id="submitBtn" onclick="handleSubmit()">
+      הצטרף וקבל 15% הנחה
+    </button>
+
+    <div class="perks">
+      <div class="perk">
+        <span class="perk-dot"></span>
+        <span>קוד ההנחה מגיע ישירות למייל שלך</span>
+      </div>
+      <div class="perk">
+        <span class="perk-dot"></span>
+        <span>עדכונים על קולקציות חדשות לפני כולם</span>
+      </div>
+      <div class="perk">
+        <span class="perk-dot"></span>
+        <span>הפרטים שלך מאובטחים ולא יועברו הלאה</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div id="successWrap" class="success">
+    <div class="success-line"></div>
+    <h2>ברוך הבא לשבט</h2>
+    <p>שלחנו את קוד ההנחה שלך למייל.<br>בדוק גם את תיבת הספאם אם לא הגיע.</p>
+    <div class="code-box">
+      <div class="code-lbl">קוד ההנחה שלך</div>
+      <div class="code-val">TRIBE15</div>
+    </div>
+    <p class="code-note">תקף ל-30 יום · לרכישה ראשונה בלבד</p>
+    <a href="https://benben-studio.com" class="shop-link">לקנייה באתר</a>
+  </div>
+
+</div>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <p>ים · טבע · חופש · Wear the Tribe</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><a href="https://benben-studio.com">benben-studio.com</a></p>
+  <p style="margin-top:6px;">© BenBen Studio 2026</p>
+</footer>
+
+<script>
+function handleSubmit() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const err   = document.getElementById('errMsg');
+
+  err.style.display = 'none';
+
+  if (!name)                          { showErr('נא להזין שם מלא'); return; }
+  if (!phone)                         { showErr('נא להזין מספר טלפון'); return; }
+  if (!email || !email.includes('@')) { showErr('נא להזין כתובת מייל תקינה'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '...שולח';
+
+  fetch('https://yotamst22.app.n8n.cloud/webhook/benben-lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, phone, email })
+  })
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      document.getElementById('formWrap').style.display    = 'none';
+      document.getElementById('successWrap').style.display = 'flex';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(function() {
+      showErr('שגיאת חיבור — נסה שוב');
+      btn.disabled = false;
+      btn.textContent = 'הצטרף וקבל 15% הנחה';
+    });
+}
+
+function showErr(msg) {
+  const e = document.getElementById('errMsg');
+  e.textContent = msg;
+  e.style.display = 'block';
+}
+</script>
+</body>
+</html>
